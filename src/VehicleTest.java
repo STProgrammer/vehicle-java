@@ -36,8 +36,9 @@ public class VehicleTest {
       System.out.println("3......................Find vehicle by name");
       System.out.println("4..............Show data about all vehicles");
       System.out.println("5.......Change direction of a given vehicle");
-      System.out.println("6..............................Exit program");
-      System.out.println(".............................Your choice?");
+      System.out.println("6.........................Test clone method");
+      System.out.println("7..............................Exit program");
+      System.out.println("...............................Your choice?");
       int choice = scan.nextInt();
       String name;
 
@@ -95,6 +96,14 @@ public class VehicleTest {
       	}
         break;
       case 6:
+    	  Car car1 = new Car("A bad car","red",100000,1999,"A111",350,0);
+    	  Car car2 = (Car)car1.clone();
+    	  car2.getBuyingDate().set(2003, 1, 2);
+    	  System.out.println("Date objects are separate, deep copy");
+    	  System.out.printf("%n %tF", car1.getBuyingDate());
+    	  System.out.printf("%n %tF %n", car2.getBuyingDate());
+    	  break;
+      case 7:
       	scan.close();
         System.exit(0);
       default:

@@ -1,5 +1,5 @@
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Comparable<Vehicle>, Cloneable {
 	private String colour;
 	private String name;
 	private String serialNumber;
@@ -7,6 +7,7 @@ public abstract class Vehicle {
 	private int price;
 	private int direction;
 	private double speed;
+	private java.util.Calendar buyingDate;
 	protected java.util.Scanner input;
 	
 	public Vehicle() {}
@@ -19,6 +20,7 @@ public abstract class Vehicle {
 		setModel(model);
 		setPrice(price);
 		setDirection(direction);
+		setBuyingDate(new java.util.GregorianCalendar());
 		this.speed = 0;
 	}
 	
@@ -100,6 +102,37 @@ public abstract class Vehicle {
 		this.speed = speed;
 	}
 	
+	public java.util.Calendar getBuyingDate() {
+		return buyingDate;
+	}
+
+	public void setBuyingDate(java.util.Calendar buyingDate) {
+		this.buyingDate = buyingDate;
+	}
+	
+	@Override
+	public int compareTo(Vehicle other) {
+		  if (this.getPrice() < other.getPrice()) {
+			  return -1;
+		  }
+		  if (this.getPrice() == other.getPrice()) {
+			  return 0;
+		  }
+		  else return 1;
+	}
+	
+	@Override
+	public Object clone() {
+	    try {
+	        Vehicle cloned = (Vehicle)super.clone();
+	        cloned.setBuyingDate((java.util.Calendar)cloned.getBuyingDate().clone());
+	        return cloned;
+	      }
+	      catch (CloneNotSupportedException ex) {
+	        return null;
+	      }
+	}
+	
 	/** toString method */
 	public String toString() {
 		return String.format("%nName: %s %nSerialNumber: %s "
@@ -108,5 +141,7 @@ public abstract class Vehicle {
 				getSerialNumber(), getColour(), getModel(),
 				getPrice(), getDirection(), getSpeed());
 	}
+
+
 
 }

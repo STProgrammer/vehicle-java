@@ -16,6 +16,7 @@ public class Car extends Vehicle {
 		setDirection(direction);
 		setPower(power);
 		productionDate = new java.util.GregorianCalendar();
+		setBuyingDate(new java.util.GregorianCalendar());
 		setSpeed(0);
 	}
 	
