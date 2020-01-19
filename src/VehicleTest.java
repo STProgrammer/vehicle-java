@@ -116,7 +116,7 @@ public class VehicleTest {
     	  carTest.accelerate(3);
     	  carTest.accelerate(250);
     	  bicycleTest.accelerate(5);
-    	  bicycleTest.accelerate(100);
+    	  bicycleTest.accelerate(200);
     	  carTest.breaks(100);
     	  bicycleTest.breaks(50);
     	  carTest.stop();
