@@ -125,7 +125,7 @@ public abstract class Vehicle implements Comparable<Vehicle>, Cloneable {
 	public Object clone() {
 	    try {
 	        Vehicle cloned = (Vehicle)super.clone();
-	        cloned.setBuyingDate((java.util.Calendar)cloned.getBuyingDate().clone());
+	        cloned.buyingDate = (java.util.Calendar)buyingDate.clone();
 	        return cloned;
 	      }
 	      catch (CloneNotSupportedException ex) {

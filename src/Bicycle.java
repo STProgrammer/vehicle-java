@@ -70,6 +70,14 @@ public class Bicycle extends Vehicle {
 	}
 	
 	@Override
+	public Object clone() {
+        Bicycle cloned = (Bicycle)super.clone();
+        cloned.productionDate = (java.util.Calendar)productionDate.clone();
+        return cloned;
+	}
+	
+	
+	@Override
 	public String toString() {
 		return String.format("%nName: %s %nSerialNumber: %s "
 				+ "%nColour: %s %nModel: %d %nPrice: %,d "

@@ -99,9 +99,12 @@ public class VehicleTest {
     	  Car car1 = new Car("A bad car","red",100000,1999,"A111",350,0);
     	  Car car2 = (Car)car1.clone();
     	  car2.getBuyingDate().set(2003, 1, 2);
+    	  car2.getProductionDate().set(2003, 5, 5);
     	  System.out.println("Date objects are separate, deep copy");
     	  System.out.printf("%n %tF", car1.getBuyingDate());
     	  System.out.printf("%n %tF %n", car2.getBuyingDate());
+    	  System.out.printf("Production date car2 edited: "
+    	  		+ "%n %tF %n", car2.getProductionDate());
     	  break;
       case 7:
       	scan.close();

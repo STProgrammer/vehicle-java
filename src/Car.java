@@ -82,6 +82,13 @@ public class Car extends Vehicle {
 	}
 	
 	@Override
+	public Object clone() {
+        Car cloned = (Car)super.clone();
+        cloned.productionDate = (java.util.Calendar)productionDate.clone();
+        return cloned;
+	}
+	
+	@Override
 	public String toString() {
 		return String.format("%nName: %s %nSerialNumber: %s "
 				+ "%nColour: %s %nModel: %d %nPrice: %,d "
