@@ -10,7 +10,7 @@ public class Bicycle extends Vehicle {
 			 int gears, int direction) {
 		setColour(colour);
 		setName(name);
-		setSerialNumber(serialNumber);
+		setSerialNr(serialNumber);
 		setModel(model);
 		setPrice(price);
 		setDirection(direction);
@@ -33,13 +33,14 @@ public class Bicycle extends Vehicle {
 		System.out.print("\nModel: ");
 		setModel(input.nextInt());
 		System.out.print("\nSerial #: ");
-		setSerialNumber(input.next());
+		setSerialNr(input.next());
 		System.out.print("\nGears: ");
 		setGears(input.nextInt());
 		setDirection(0);
 		setSpeed(0);
 	}
 	
+	/** turn left and right */
 	@Override
 	public void turnRight(int degrees) {
 		System.out.printf("%nBicycle turned %d degrees to "
@@ -51,8 +52,40 @@ public class Bicycle extends Vehicle {
 	public void turnLeft(int degrees) {
 		System.out.printf("%nBicycle turned %d degrees to "
 				+ "left %n", degrees);
+	} /** end turn left and right */
+	
+	@Override  /** accelerate */
+	public void accelerate(double factor) {
+		if (this.getSpeed() == 0) {
+			if ((0.3 * factor) > super.MAX_SPEED_BIKE) {
+				this.setSpeed(super.MAX_SPEED_BIKE);
+			}
+			else this.setSpeed((0.3 * factor));
+		}
+		else if ((this.getSpeed() * 0.5 * factor) 
+				> super.MAX_SPEED_BIKE) {
+			this.setSpeed(super.MAX_SPEED_BIKE);
+		}
+		else {
+			this.setSpeed((this.getSpeed() * 0.5 * factor));
+		}
+		System.out.printf("Bicycle accelerated to: %.2f km/h ",
+				this.getSpeed());
+		System.out.println();
+		return;
 	}
-
+	
+	/** Breaks */
+	@Override
+	public void breaks(double factor) {
+		this.setSpeed((this.getSpeed() / (factor * 0.5)));
+		System.out.printf("Bicycle slowed down to: %.2f km/h ",
+				this.getSpeed());
+		System.out.println();
+		return;
+	}
+	
+	/** getters and setters */
 	public int getGears() {
 		return gears;
 	}
@@ -67,7 +100,8 @@ public class Bicycle extends Vehicle {
 
 	public void setProductionDate(java.util.Calendar productionDate) {
 		this.productionDate = productionDate;
-	}
+	}	
+	/** end getters and setters */
 	
 	@Override
 	public Object clone() {
@@ -83,7 +117,7 @@ public class Bicycle extends Vehicle {
 				+ "%nColour: %s %nModel: %d %nPrice: %,d "
 				+ "%nDirection: %d %nSpeed: %.2f"
 				+ "%nGears: %d %nProductionDate %tF", getName(), 
-				getSerialNumber(), getColour(), getModel(),
+				getSerialNr(), getColour(), getModel(),
 				getPrice(), getDirection(), getSpeed(), getGears(),
 				getProductionDate());
 	}

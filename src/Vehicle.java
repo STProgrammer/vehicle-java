@@ -1,8 +1,9 @@
 
-public abstract class Vehicle implements Comparable<Vehicle>, Cloneable {
+public abstract class Vehicle implements Comparable<Vehicle>,
+Cloneable, Driveable {
 	private String colour;
 	private String name;
-	private String serialNumber;
+	private String serialNr;
 	private int model;
 	private int price;
 	private int direction;
@@ -16,7 +17,7 @@ public abstract class Vehicle implements Comparable<Vehicle>, Cloneable {
 			int model, String serialNumber, int direction) {
 		setColour(colour);
 		setName(name);
-		setSerialNumber(serialNumber);
+		setSerialNr(serialNumber);
 		setModel(model);
 		setPrice(price);
 		setDirection(direction);
@@ -36,7 +37,7 @@ public abstract class Vehicle implements Comparable<Vehicle>, Cloneable {
 		System.out.print("\nModel: ");
 		setModel(input.nextInt());
 		System.out.print("\nSerial #: ");
-		setSerialNumber(input.next());
+		setSerialNr(input.next());
 		setDirection(0);
 		setSpeed(0);
 	}
@@ -44,6 +45,11 @@ public abstract class Vehicle implements Comparable<Vehicle>, Cloneable {
 	/** abstract methods */
 	public abstract void turnLeft(int degrees);
 	public abstract void turnRight(int degrees);
+	
+	public void stop() {
+		setSpeed(0);
+		System.out.println("The vehicle has stopped!");
+	}
 	
 	/** get and set methods */
 	public String getColour() {
@@ -62,12 +68,12 @@ public abstract class Vehicle implements Comparable<Vehicle>, Cloneable {
 		this.name = name;
 	}
 
-	public String getSerialNumber() {
-		return serialNumber;
+	public String getSerialNr() {
+		return serialNr;
 	}
 
-	public void setSerialNumber(String serialNumber) {
-		this.serialNumber = serialNumber;
+	public void setSerialNr(String serialNumber) {
+		this.serialNr = serialNumber;
 	}
 
 	public int getModel() {
@@ -110,6 +116,8 @@ public abstract class Vehicle implements Comparable<Vehicle>, Cloneable {
 		this.buyingDate = buyingDate;
 	}
 	
+	/** end get and set methods */
+	
 	@Override
 	public int compareTo(Vehicle other) {
 		  if (this.getPrice() < other.getPrice()) {
@@ -138,7 +146,7 @@ public abstract class Vehicle implements Comparable<Vehicle>, Cloneable {
 		return String.format("%nName: %s %nSerialNumber: %s "
 				+ "%nColour: %s %nModel: %d %nPrice: %,d "
 				+ "%nDirection: %d %nSpeed: %.2f", getName(), 
-				getSerialNumber(), getColour(), getModel(),
+				getSerialNr(), getColour(), getModel(),
 				getPrice(), getDirection(), getSpeed());
 	}
 

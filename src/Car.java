@@ -1,4 +1,3 @@
-
 public class Car extends Vehicle {
 	private int power;
 	java.util.Calendar productionDate;
@@ -10,7 +9,7 @@ public class Car extends Vehicle {
 			 int power, int direction) {
 		setColour(colour);
 		setName(name);
-		setSerialNumber(serialNumber);
+		setSerialNr(serialNumber);
 		setModel(model);
 		setPrice(price);
 		setDirection(direction);
@@ -33,12 +32,14 @@ public class Car extends Vehicle {
 		System.out.print("\nModel: ");
 		setModel(input.nextInt());
 		System.out.print("\nSerial #: ");
-		setSerialNumber(input.next());
+		setSerialNr(input.next());
 		System.out.print("\nPower: ");
 		setPower(input.nextInt());
 		setDirection(0);
 		setSpeed(0);
 	}
+	
+	/** turn left and right */
 	
 	@Override
 	public void turnRight(int degrees) {
@@ -64,7 +65,40 @@ public class Car extends Vehicle {
 		if (direction < 0) { direction += 360; }
 		setDirection(direction);
 	}
+	
+	/** end turn left and right*/
+	
+	@Override  /** accelerate */
+	public void accelerate(double factor) {
+		if (this.getSpeed() == 0) {
+			if ((0.5 * factor) > super.MAX_SPEED_CAR) {
+				this.setSpeed(super.MAX_SPEED_CAR);
+			}
+			else this.setSpeed((0.5 * factor));
+		}
+		else if ((this.getSpeed() * factor) > super.MAX_SPEED_CAR) {
+			this.setSpeed(super.MAX_SPEED_CAR);
+		}
+		else {
+			this.setSpeed((this.getSpeed() * factor));
+		}
+		System.out.printf("Car accelerated to: %.2f km/h ",
+				this.getSpeed());
+		System.out.println();
+		return;
+	}
+	
+	/** Breaks */
+	@Override
+	public void breaks(double factor) {
+		this.setSpeed((this.getSpeed() / factor));
+		System.out.printf("Car slowed down to: %.2f km/h ",
+				this.getSpeed());
+		System.out.println();
+		return;
+	}
 
+	/** getters and setters */
 	public int getPower() {
 		return power;
 	}
@@ -79,12 +113,15 @@ public class Car extends Vehicle {
 
 	public void setProductionDate(java.util.Calendar productionDate) {
 		this.productionDate = productionDate;
-	}
+	} 
+	
+	/** end getters and setters */
 	
 	@Override
 	public Object clone() {
         Car cloned = (Car)super.clone();
-        cloned.productionDate = (java.util.Calendar)productionDate.clone();
+        cloned.productionDate = 
+        		(java.util.Calendar)productionDate.clone();
         return cloned;
 	}
 	
@@ -94,7 +131,7 @@ public class Car extends Vehicle {
 				+ "%nColour: %s %nModel: %d %nPrice: %,d "
 				+ "%nDirection: %d %nSpeed: %.2f"
 				+ "%nPower: %d %nProductionDate %tF", getName(), 
-				getSerialNumber(), getColour(), getModel(),
+				getSerialNr(), getColour(), getModel(),
 				getPrice(), getDirection(), getSpeed(), getPower(),
 				getProductionDate());
 	}
