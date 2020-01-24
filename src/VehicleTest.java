@@ -5,6 +5,7 @@
 
 import java.util.*;
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 
 public class VehicleTest {
   public static void main(String[] args) {
@@ -29,6 +30,25 @@ public class VehicleTest {
     arr.add(new Bicycle("Diamant","yellow",4000,1993,"BC100",10,0));
     arr.add(new Car("Ferrari Testarossa","red",1200000,1996,"A112",350,0));
     arr.add(new Bicycle("DBS","pink",5000,1994,"42",10,0));
+    
+    java.io.File file = new java.io.File("Vehicles.txt");
+    Scanner in = new Scanner(file).useLocale(Locale.US);
+    in.useDelimiter(",");
+  	while (in.hasNext()) {
+	    try {
+    	      String vehClass = in.next();                
+    	      Class veh1 = Class.forName(vehClass);
+			Vehicle veh = (Vehicle)veh1.
+					getDeclaredConstructor().newInstance();
+			arr.add(veh);
+			veh.readData(in);
+	    } catch (Exception e) { 
+	    	System.out.print("Exception");
+	    	System.exit(0);
+	    	}
+    }
+    
+    
 
     while(true) {
       System.out.println("1...................................New car");
@@ -123,8 +143,14 @@ public class VehicleTest {
     	  bicycleTest.stop();
     	  break;
       case 8:
-      	scan.close();
-        System.exit(0);
+		java.io.PrintWriter output = new java.io.PrintWriter(file);
+      	for(Vehicle v : arr) {
+	        v.writeData(output);
+	    }		
+		scan.close();
+		in.close();
+		output.close();
+		System.exit(0);
       default:
         System.out.println("Wrong input!");
       }

@@ -1,0 +1,10 @@
+
+Name: Test car 
+SerialNumber: A111 
+Colour: red 
+Model: 1999 
+Price: 100 000 
+Direction: 0 
+Speed: 0,00
+Power: 350 
+ProductionDate 2020-01-24

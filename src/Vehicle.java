@@ -1,6 +1,7 @@
+import java.util.Calendar;
 
 public abstract class Vehicle implements Comparable<Vehicle>,
-Cloneable, Driveable {
+Cloneable, Driveable, Fileable {
 	private String colour;
 	private String name;
 	private String serialNr;
@@ -50,6 +51,45 @@ Cloneable, Driveable {
 		setSpeed(0);
 		System.out.println("The vehicle has stopped!");
 	}
+	
+	/** read Data */
+	public void readData(java.util.Scanner in) {
+		in.useDelimiter(",");
+		setName(in.next());
+		setSerialNr(in.next());
+		setColour(in.next());
+		setModel(in.nextInt());
+		setPrice(in.nextInt());
+		setDirection(in.nextInt());
+		setSpeed(in.nextDouble());
+		setBuyingDate(new java.util.GregorianCalendar(in.nextInt(),
+				in.nextInt(), in.nextInt()));
+	    System.out.println("\nVehicle read from file: ");
+	    System.out.println(this);
+	}
+	
+	/** Write data */
+	public void writeData(java.io.PrintWriter out) {
+	    try {
+	    // Write formatted output to the file
+	    out.print(this.getClass().getName() + ",");
+	    out.print(getName() + ",");
+	    out.print(getSerialNr() + ",");
+	    out.print(getColour() + ",");
+		out.print(getModel() + ",");
+		out.print(getPrice() + ",");
+		out.print(getDirection() + ",");
+		out.print(getSpeed() + ",");
+		out.print((getBuyingDate()).get(Calendar.DAY_OF_MONTH) + ",");
+		out.print((getBuyingDate()).get(Calendar.MONTH) + ",");
+		out.print((getBuyingDate()).get(Calendar.YEAR) + ",");	
+	    }
+	    catch (Exception e) {System.exit(0);}
+	    
+	    System.out.println("\nVehicle written to file: ");
+	    System.out.println(this);
+	}
+	
 	
 	/** get and set methods */
 	public String getColour() {
