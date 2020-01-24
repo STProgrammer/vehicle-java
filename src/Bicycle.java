@@ -118,10 +118,11 @@ public class Bicycle extends Vehicle {
 		return String.format("%nName: %s %nSerialNumber: %s "
 				+ "%nColour: %s %nModel: %d %nPrice: %,d "
 				+ "%nDirection: %d %nSpeed: %.2f"
-				+ "%nGears: %d %nProductionDate %tF", getName(), 
+				+ "%nGears: %d %nProduction Date: %tF"
+				+ "%nBuying Date: %tF", getName(), 
 				getSerialNr(), getColour(), getModel(),
 				getPrice(), getDirection(), getSpeed(), getGears(),
-				getProductionDate());
+				getProductionDate(), getBuyingDate());
 	}
 	
 }
