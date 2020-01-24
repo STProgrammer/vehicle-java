@@ -10,7 +10,7 @@ public class Car extends Vehicle {
 			 int power, int direction) {
 		setColour(colour);
 		setName(name);
-		setSerialNumber(serialNumber);
+		setSerialNr(serialNumber);
 		setModel(model);
 		setPrice(price);
 		setDirection(direction);
@@ -33,9 +33,11 @@ public class Car extends Vehicle {
 		System.out.print("\nModel: ");
 		setModel(input.nextInt());
 		System.out.print("\nSerial #: ");
-		setSerialNumber(input.next());
+		setSerialNr(input.next());
 		System.out.print("\nPower: ");
 		setPower(input.nextInt());
+		setProductionDate(new java.util.GregorianCalendar());
+		setBuyingDate(new java.util.GregorianCalendar());
 		setDirection(0);
 		setSpeed(0);
 	}
@@ -94,7 +96,7 @@ public class Car extends Vehicle {
 				+ "%nColour: %s %nModel: %d %nPrice: %,d "
 				+ "%nDirection: %d %nSpeed: %.2f"
 				+ "%nPower: %d %nProductionDate %tF", getName(), 
-				getSerialNumber(), getColour(), getModel(),
+				getSerialNr(), getColour(), getModel(),
 				getPrice(), getDirection(), getSpeed(), getPower(),
 				getProductionDate());
 	}
