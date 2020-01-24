@@ -29,7 +29,7 @@ public class VehicleTest {
 /** Deleted the hard coded adds so it doesn't add same types of cars
  *  everytime
  */
-    
+        
     java.io.File file = new java.io.File("Vehicles.txt");
     Scanner in = new Scanner(file).useLocale(Locale.US);
     in.useDelimiter(",");
@@ -47,8 +47,6 @@ public class VehicleTest {
 	    	}
     }
     
-    
-
     while(true) {
       System.out.println("1...................................New car");
       System.out.println("2...............................New bicycle");

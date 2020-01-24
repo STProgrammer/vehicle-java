@@ -39,6 +39,7 @@ Cloneable, Driveable, Fileable {
 		setModel(input.nextInt());
 		System.out.print("\nSerial #: ");
 		setSerialNr(input.next());
+		setBuyingDate(new java.util.GregorianCalendar());
 		setDirection(0);
 		setSpeed(0);
 	}

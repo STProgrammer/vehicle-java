@@ -37,6 +37,8 @@ public class Bicycle extends Vehicle {
 		setSerialNr(input.next());
 		System.out.print("\nGears: ");
 		setGears(input.nextInt());
+		setProductionDate(new java.util.GregorianCalendar());
+		setBuyingDate(new java.util.GregorianCalendar());
 		setDirection(0);
 		setSpeed(0);
 	}
@@ -88,12 +90,12 @@ public class Bicycle extends Vehicle {
 		out.print(getDirection() + ",");
 		out.print(getSpeed() + ",");
 		out.print(getGears() + ",");
-		out.print((getBuyingDate()).get(Calendar.DAY_OF_MONTH) + ",");
-		out.print((getBuyingDate()).get(Calendar.MONTH) + ",");
 		out.print((getBuyingDate()).get(Calendar.YEAR) + ",");
-		out.print(productionDate.get(Calendar.DAY_OF_MONTH) + ",");
-		out.print(productionDate.get(Calendar.MONTH) + ",");
+		out.print((getBuyingDate()).get(Calendar.MONTH) + ",");
+		out.print((getBuyingDate()).get(Calendar.DAY_OF_MONTH) + ",");
 		out.print(productionDate.get(Calendar.YEAR) + ",");
+		out.print(productionDate.get(Calendar.MONTH) + ",");
+		out.print(productionDate.get(Calendar.DAY_OF_MONTH) + ",");
 	    }
 	    catch (Exception e) {System.exit(0);}
 	    
@@ -163,10 +165,11 @@ public class Bicycle extends Vehicle {
 		return String.format("%nName: %s %nSerialNumber: %s "
 				+ "%nColour: %s %nModel: %d %nPrice: %,d "
 				+ "%nDirection: %d %nSpeed: %.2f"
-				+ "%nGears: %d %nProductionDate %tF", getName(), 
+				+ "%nGears: %d %nProduction Date: %tF"
+				+ "%nBuying Date: %tF", getName(), 
 				getSerialNr(), getColour(), getModel(),
 				getPrice(), getDirection(), getSpeed(), getGears(),
-				getProductionDate());
+				getProductionDate(), getBuyingDate());
 	}
 	
 }
