@@ -16,7 +16,7 @@ public class Bicycle extends Vehicle {
 		setPrice(price);
 		setDirection(direction);
 		setGears(gears);
-		productionDate = new java.util.GregorianCalendar();
+		setProductionDate(new java.util.GregorianCalendar());
 		setBuyingDate(new java.util.GregorianCalendar());
 		setSpeed(0);
 	}
