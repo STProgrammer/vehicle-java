@@ -70,6 +70,26 @@ public class Car extends Vehicle {
 	
 	/** end turn left and right*/
 	
+	@Override /** read Data */
+	public void readData(java.util.Scanner in) {
+		in.useDelimiter(",");
+		setName(in.next());
+		setSerialNr(in.next());
+		setColour(in.next());
+		setModel(in.nextInt());
+		setPrice(in.nextInt());
+		setDirection(in.nextInt());
+		setSpeed(in.nextDouble());
+		setPower(in.nextInt());
+		setBuyingDate(new java.util.GregorianCalendar(in.nextInt(),
+				in.nextInt(), in.nextInt()));
+		setProductionDate(new java.util.GregorianCalendar(in.nextInt(),
+				in.nextInt(), in.nextInt()));
+	    System.out.println("\nVehicle read from file: ");
+	    System.out.println(this);
+	}
+	
+	
 	@Override /** Writa Data*/
 	public void writeData(java.io.PrintWriter out) {
 	    try {
@@ -93,25 +113,6 @@ public class Car extends Vehicle {
 	    catch (Exception e) {System.exit(0);}
 	    
 	    System.out.println("\nVehicle written to file: ");
-	    System.out.println(this);
-	}
-	
-	@Override /** read Data */
-	public void readData(java.util.Scanner in) {
-		in.useDelimiter(",");
-		setName(in.next());
-		setSerialNr(in.next());
-		setColour(in.next());
-		setModel(in.nextInt());
-		setPrice(in.nextInt());
-		setDirection(in.nextInt());
-		setSpeed(in.nextDouble());
-		setPower(in.nextInt());
-		setBuyingDate(new java.util.GregorianCalendar(in.nextInt(),
-				in.nextInt(), in.nextInt()));
-		setProductionDate(new java.util.GregorianCalendar(in.nextInt(),
-				in.nextInt(), in.nextInt()));
-	    System.out.println("\nVehicle read from file: ");
 	    System.out.println(this);
 	}
 	

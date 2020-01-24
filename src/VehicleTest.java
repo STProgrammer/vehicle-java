@@ -26,10 +26,9 @@ public class VehicleTest {
     ArrayList<Vehicle> arr=new ArrayList<Vehicle>();
     Vehicle vehicle;
 
-    arr.add(new Car("Volvo","Black",85000,2010,"1010-11",163,0));
-    arr.add(new Bicycle("Diamant","yellow",4000,1993,"BC100",10,0));
-    arr.add(new Car("Ferrari Testarossa","red",1200000,1996,"A112",350,0));
-    arr.add(new Bicycle("DBS","pink",5000,1994,"42",10,0));
+/** Deleted the hard coded adds so it doesn't add same types of cars
+ *  everytime
+ */
     
     java.io.File file = new java.io.File("Vehicles.txt");
     Scanner in = new Scanner(file).useLocale(Locale.US);
