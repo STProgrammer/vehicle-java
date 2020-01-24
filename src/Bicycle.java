@@ -1,4 +1,3 @@
-import java.util.Calendar;
 
 public class Bicycle extends Vehicle {
 	private int gears;
@@ -16,7 +15,7 @@ public class Bicycle extends Vehicle {
 		setPrice(price);
 		setDirection(direction);
 		setGears(gears);
-		productionDate = new java.util.GregorianCalendar();
+		setProductionDate(new java.util.GregorianCalendar());
 		setBuyingDate(new java.util.GregorianCalendar());
 		setSpeed(0);
 	}
@@ -57,52 +56,6 @@ public class Bicycle extends Vehicle {
 				+ "left %n", degrees);
 	} /** end turn left and right */
 	
-	@Override /** read Data */
-	public void readData(java.util.Scanner in) {
-		in.useDelimiter(",");
-		setName(in.next());
-		setSerialNr(in.next());
-		setColour(in.next());
-		setModel(in.nextInt());
-		setPrice(in.nextInt());
-		setDirection(in.nextInt());
-		setSpeed(in.nextDouble());
-		setGears(in.nextInt());
-		setBuyingDate(new java.util.GregorianCalendar(in.nextInt(),
-				in.nextInt(), in.nextInt()));
-		setProductionDate(new java.util.GregorianCalendar(in.nextInt(),
-				in.nextInt(), in.nextInt()));
-	    System.out.println("\nVehicle read from file: ");
-	    System.out.println(this);
-	}
-	
-	
-	@Override /** Write Data */
-	public void writeData(java.io.PrintWriter out) {
-	    try {
-	    // Write formatted output to the file
-	    out.print(this.getClass().getName() + ",");
-	    out.print(getName() + ",");
-	    out.print(getSerialNr() + ",");
-	    out.print(getColour() + ",");
-		out.print(getModel() + ",");
-		out.print(getPrice() + ",");
-		out.print(getDirection() + ",");
-		out.print(getSpeed() + ",");
-		out.print(getGears() + ",");
-		out.print((getBuyingDate()).get(Calendar.YEAR) + ",");
-		out.print((getBuyingDate()).get(Calendar.MONTH) + ",");
-		out.print((getBuyingDate()).get(Calendar.DAY_OF_MONTH) + ",");
-		out.print(productionDate.get(Calendar.YEAR) + ",");
-		out.print(productionDate.get(Calendar.MONTH) + ",");
-		out.print(productionDate.get(Calendar.DAY_OF_MONTH) + ",");
-	    }
-	    catch (Exception e) {System.exit(0);}
-	    
-	    System.out.println("\nVehicle written to file: ");
-	    System.out.println(this);
-	}
-
 	@Override  /** accelerate */
 	public void accelerate(double factor) {
 		if (this.getSpeed() == 0) {
@@ -165,11 +118,10 @@ public class Bicycle extends Vehicle {
 		return String.format("%nName: %s %nSerialNumber: %s "
 				+ "%nColour: %s %nModel: %d %nPrice: %,d "
 				+ "%nDirection: %d %nSpeed: %.2f"
-				+ "%nGears: %d %nProduction Date: %tF"
-				+ "%nBuying Date: %tF", getName(), 
+				+ "%nGears: %d %nProductionDate %tF", getName(), 
 				getSerialNr(), getColour(), getModel(),
 				getPrice(), getDirection(), getSpeed(), getGears(),
-				getProductionDate(), getBuyingDate());
+				getProductionDate());
 	}
 	
 }
