@@ -36,6 +36,8 @@ public class Bicycle extends Vehicle {
 		setSerialNr(input.next());
 		System.out.print("\nGears: ");
 		setGears(input.nextInt());
+		setProductionDate(new java.util.GregorianCalendar());
+		setBuyingDate(new java.util.GregorianCalendar());
 		setDirection(0);
 		setSpeed(0);
 	}
