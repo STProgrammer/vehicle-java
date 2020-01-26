@@ -121,13 +121,13 @@ public class Car extends Vehicle {
 	@Override  /** accelerate */
 	public void accelerate(double factor) {
 		if (this.getSpeed() == 0) {
-			if ((0.5 * factor) > super.MAX_SPEED_CAR) {
-				this.setSpeed(super.MAX_SPEED_CAR);
+			if ((0.5 * factor) > Driveable.MAX_SPEED_CAR) {
+				this.setSpeed(Driveable.MAX_SPEED_CAR);
 			}
 			else this.setSpeed((0.5 * factor));
 		}
-		else if ((this.getSpeed() * factor) > super.MAX_SPEED_CAR) {
-			this.setSpeed(super.MAX_SPEED_CAR);
+		else if ((this.getSpeed() * factor) > Driveable.MAX_SPEED_CAR) {
+			this.setSpeed(Driveable.MAX_SPEED_CAR);
 		}
 		else {
 			this.setSpeed((this.getSpeed() * factor));

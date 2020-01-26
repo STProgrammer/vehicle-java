@@ -59,14 +59,14 @@ public class Bicycle extends Vehicle {
 	@Override  /** accelerate */
 	public void accelerate(double factor) {
 		if (this.getSpeed() == 0) {
-			if ((0.3 * factor) > super.MAX_SPEED_BIKE) {
-				this.setSpeed(super.MAX_SPEED_BIKE);
+			if ((0.3 * factor) > Driveable.MAX_SPEED_BIKE) {
+				this.setSpeed(Driveable.MAX_SPEED_BIKE);
 			}
 			else this.setSpeed((0.3 * factor));
 		}
 		else if ((this.getSpeed() * 0.5 * factor) 
-				> super.MAX_SPEED_BIKE) {
-			this.setSpeed(super.MAX_SPEED_BIKE);
+				> Driveable.MAX_SPEED_BIKE) {
+			this.setSpeed(Driveable.MAX_SPEED_BIKE);
 		}
 		else {
 			this.setSpeed((this.getSpeed() * 0.5 * factor));
