@@ -31,20 +31,21 @@ public class VehicleTest {
  */
         
     java.io.File file = new java.io.File("Vehicles.txt");
-    Scanner in = new Scanner(file).useLocale(Locale.US);
-    in.useDelimiter(",");
-  	while (in.hasNext()) {
-	    try {
-    	      String vehClass = in.next();                
-    	      Class veh1 = Class.forName(vehClass);
-			Vehicle veh = (Vehicle)veh1.
-					getDeclaredConstructor().newInstance();
-			arr.add(veh);
-			veh.readData(in);
-	    } catch (Exception e) { 
-	    	System.out.print("Exception");
-	    	System.exit(0);
-	    	}
+    try (Scanner in = new Scanner(file).useLocale(Locale.US)) {
+        in.useDelimiter(",");
+        while (in.hasNext()) {
+            try {
+                String vehClass = in.next();                
+                Class veh1 = Class.forName(vehClass);
+                Vehicle veh = (Vehicle)veh1.
+                        getDeclaredConstructor().newInstance();
+                arr.add(veh);
+                veh.readData(in);
+            } catch (Exception e) { 
+                System.out.print("Exception");
+                System.exit(0);
+            }
+        }
     }
     
     while(true) {
@@ -145,7 +146,6 @@ public class VehicleTest {
 	        v.writeData(output);
 	    }		
 		scan.close();
-		in.close();
 		output.close();
 		System.exit(0);
       default:
