@@ -63,24 +63,24 @@ public class VehicleTest {
 
       switch (choice) {
       case 1:
-    	arr.add(new Car());
-        vehicle = arr.get(arr.size() - 1);
+    	  vehicle = new Car();
         try {
             vehicle.setAllFields();
           } catch(Exception e) {
             System.out.println("Wrong input!");
             System.exit(1);
           }
+        arr.add(vehicle);
         break;
       case 2:
-      	arr.add(new Bicycle());
-        vehicle = arr.get(arr.size() - 1);
+    	vehicle = new Bicycle();
         try {
             vehicle.setAllFields();
           } catch(Exception e) {
             System.out.println("Wrong input!");
             System.exit(1);
           }
+        arr.add(vehicle);
         break;
       case 3:
     	System.out.println("Name of vehicle: ");
